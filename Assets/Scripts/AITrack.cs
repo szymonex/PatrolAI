@@ -20,17 +20,20 @@ public class AITrack : MonoBehaviour
 
     public void AddNewNavPointToList()
     {
-        newNavPoint = gameObject.GetComponentInChildren<Transform>().GetChild(childIndex);
-        if (childIndex < transform.childCount - 1)
+        if(transform.childCount > 0)
         {
-            childIndex++;
+            newNavPoint = gameObject.GetComponentInChildren<Transform>().GetChild(childIndex);
+            if (childIndex < transform.childCount - 1)
+            {
+                childIndex++;
+            }
+            else
+            {
+                childIndex = 0;
+            }
+            NavPoints.Add(newNavPoint);
+            updatePatrol.enabled = true;
         }
-        else
-        {
-            childIndex = 0;
-        }
-        NavPoints.Add(newNavPoint);
-        updatePatrol.enabled = true;
     }
 
     public void RemoveNavPointFromList(Transform unusedTargetNavPoint)

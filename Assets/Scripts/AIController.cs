@@ -23,10 +23,6 @@ public class AIController : MonoBehaviour
     {
         Vector3 targetPosition = targetNavPoint.position - transform.position;
         transform.position += targetPosition * speedFactor * Time.deltaTime;
-        if(targetPosition == targetNavPoint.position)
-        {
-            updatePatrol.enabled = false;
-        }
     }
 
     private void OnTriggerEnter(Collider collision)
