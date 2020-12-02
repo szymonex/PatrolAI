@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
     Transform targetNavPoint;
-    [SerializeField] public float speedFactor;
+    [SerializeField] public float speedFactor = 1.2f;
     AITrack aiTrack;
-    int currentNavPointIndex;
+    int currentNavPointIndex = 0;
     UpdatePatrol updatePatrol;
 
     void Start()
@@ -18,7 +16,6 @@ public class AIController : MonoBehaviour
             Debug.Log("Obiekt AITrack nie został znaleziony");
         }
         updatePatrol = GetComponent<UpdatePatrol>();
-        currentNavPointIndex = 0;
         targetNavPoint = aiTrack.NavPoints[currentNavPointIndex];
     }
 
