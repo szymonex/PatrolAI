@@ -18,11 +18,18 @@ public class AIController : MonoBehaviour
         updatePatrol = GetComponent<UpdatePatrol>();
         targetNavPoint = aiTrack.NavPoints[currentNavPointIndex];
     }
-
     public void Patrol()
     {
-        Vector3 targetPosition = targetNavPoint.position - transform.position;
-        transform.position += targetPosition * speedFactor * Time.deltaTime;
+        if (aiTrack.transform.childCount > 0)
+        {
+            Vector3 targetPosition = targetNavPoint.position - transform.position;
+            transform.position += targetPosition * speedFactor * Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("Brak nowych NavPoints na scenie!");
+            updatePatrol.enabled = false;
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
