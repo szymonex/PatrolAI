@@ -337,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818605732823462397, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
       propertyPath: m_Name
-      value: NavPoint (1)
+      value: NavPoint_02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
@@ -491,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818605732823462397, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
       propertyPath: m_Name
-      value: NavPoint (3)
+      value: NavPoint_04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
@@ -633,13 +633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1d0c2ef99929a4092badd223b91c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navPoints:
-  - {fileID: 57259624}
-  - {fileID: 1725582832}
-  - {fileID: 810031089}
-  - {fileID: 1923889554}
-  - {fileID: 1902229523}
-  - {fileID: 1881275748}
 --- !u!1 &1659625893
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +646,7 @@ GameObject:
   - component: {fileID: 1659625895}
   - component: {fileID: 1659625898}
   - component: {fileID: 1659625899}
+  - component: {fileID: 1659625894}
   - component: {fileID: 1659625900}
   m_Layer: 0
   m_Name: AI
@@ -661,6 +655,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1659625894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659625893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1d0080820eff74dba0605193b6c31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &1659625895
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -752,10 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d981040bd1bde8649a4c0ceea6a241a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetNavPoint: {fileID: 0}
   speedFactor: 1.2
-  aiTrack: {fileID: 0}
-  currentNavPointIndex: 0
 --- !u!135 &1659625900
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -822,7 +825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818605732823462397, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
       propertyPath: m_Name
-      value: NavPoint (2)
+      value: NavPoint_03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
@@ -884,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818605732823462397, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
       propertyPath: m_Name
-      value: NavPoint (6)
+      value: NavPoint_07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
@@ -946,7 +949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818605732823462397, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
       propertyPath: m_Name
-      value: NavPoint (5)
+      value: NavPoint_06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
@@ -1008,7 +1011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818605732823462397, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
       propertyPath: m_Name
-      value: NavPoint (4)
+      value: NavPoint_05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
@@ -1070,7 +1073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818605732823462397, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}
       propertyPath: m_Name
-      value: NavPoint
+      value: NavPoint_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50c10da9a84b8e498e71a8a4b03546f, type: 3}

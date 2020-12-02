@@ -4,51 +4,48 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
-    public Transform targetNavPoint;
-    public float speedFactor;
-    public AITrack aiTrack;
-    public int currentNavPointIndex;
+    Transform targetNavPoint;
+    [SerializeField] public float speedFactor;
+    AITrack aiTrack;
+    int currentNavPointIndex;
+    UpdatePatrol updatePatrol;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-
-        aiTrack = GameObject.FindObjectOfType<AITrack>();
+        aiTrack = GameObject.Find("AINavPoints").GetComponent<AITrack>();
         if (aiTrack == null)
         {
-            Debug.Log("Obiekt typu AITrack nie został znaleziony");
+            Debug.Log("Obiekt AITrack nie został znaleziony");
         }
+        updatePatrol = GetComponent<UpdatePatrol>();
         currentNavPointIndex = 0;
-        targetNavPoint = aiTrack.navPoints[currentNavPointIndex];
+        targetNavPoint = aiTrack.NavPoints[currentNavPointIndex];
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Patrol()
     {
-        Patrol();
-
+        Vector3 targetPosition = targetNavPoint.position - transform.position;
+        transform.position += targetPosition * speedFactor * Time.deltaTime;
+        if(targetPosition == targetNavPoint.position)
+        {
+            updatePatrol.enabled = false;
+        }
     }
-
-    void Patrol()
-    {
-        Vector3 toTarget = targetNavPoint.position - transform.position;
-        transform.position += toTarget * speedFactor * Time.deltaTime;
-    }
-
 
     private void OnTriggerEnter(Collider collision)
     {
-
         if (collision.transform == targetNavPoint)
         {
+            updatePatrol.enabled = false;
+            aiTrack.RemoveNavPointFromList(collision.transform);
+            aiTrack.AddNewNavPointToList();
             targetNavPoint = GetNextNavPoint();
         }
     }
 
     public Transform GetNextNavPoint()
     {
-        if (currentNavPointIndex < aiTrack.navPoints.Length - 1)
+        if(currentNavPointIndex < aiTrack.NavPoints.Count - 1)
         {
             currentNavPointIndex++;
         }
@@ -56,6 +53,6 @@ public class AIController : MonoBehaviour
         {
             currentNavPointIndex = 0;
         }
-        return aiTrack.navPoints[currentNavPointIndex];
+        return aiTrack.NavPoints[currentNavPointIndex];
     }
 }
