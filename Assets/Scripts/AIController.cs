@@ -13,7 +13,7 @@ public class AIController : MonoBehaviour
         aiTrack = GameObject.Find("AINavPoints").GetComponent<AITrack>();
         if (aiTrack == null)
         {
-            Debug.Log("Obiekt AITrack nie został znaleziony");
+            Debug.Log("Obiekt AITrack nie został znaleziony!");
         }
         updatePatrol = GetComponent<UpdatePatrol>();
         targetNavPoint = aiTrack.NavPoints[currentNavPointIndex];

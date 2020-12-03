@@ -14,25 +14,31 @@ public class AITrack : MonoBehaviour
         updatePatrol = GameObject.Find("AI").GetComponent<UpdatePatrol>();
         if (updatePatrol == null)
         {
-            Debug.Log("Obiekt AI nie został znaleziony");
+            Debug.Log("Obiekt AI nie został znaleziony!");
         }
         AddNewNavPointToList();
     }
 
     public void AddNewNavPointToList()
     {
-        newNavPoint = gameObject.GetComponentInChildren<Transform>().GetChild(childIndex);
-        if (childIndex < transform.childCount - 1)
+        if (transform.childCount > 0)
         {
-            childIndex++;
+            newNavPoint = gameObject.GetComponentInChildren<Transform>().GetChild(childIndex);
+            if(newNavPoint != null)
+            {
+                if (childIndex < transform.childCount - 1)
+                {
+                    childIndex++;
+                }
+                else
+                {
+                    childIndex = 0;
+                }
+                NavPoints.Add(newNavPoint);
+                currentNavPoint = newNavPoint;
+                updatePatrol.enabled = true;
+            }
         }
-        else
-        {
-            childIndex = 0;
-        }
-        NavPoints.Add(newNavPoint);
-        currentNavPoint = newNavPoint;
-        updatePatrol.enabled = true;
     }
 
     public void RemoveNavPointFromList(Transform unusedTargetNavPoint)
